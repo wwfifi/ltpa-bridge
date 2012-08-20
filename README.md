@@ -2,7 +2,8 @@
 	
 Configure
 --------
-Configure values in the property file `src/main/resources/ltpa.properties` appropriate to your environment.
+* Configure values in the property file `src/main/resources/ltpa.properties` appropriate to your environment.
+* In `src/main/resources/shiro.ini` file change: `casRealm.casServerUrlPrefix`, `casRealm.casService`, `user.loginUrl` properties appropriate to your environment.
 
 Build
 -----
