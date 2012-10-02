@@ -4,7 +4,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Properties;
 
 import javax.servlet.http.Cookie;
 
@@ -270,21 +269,15 @@ public final class LtpaToken {
         token = concatenate(token, ltpa.expires);
         token = concatenate(token, ltpa.user);
         md.update(token);
-        
-        log.debug("The token without the digest is [" + token + "]; Base64 encoded, that's [" + LtpaBase64.encode(token) + "]");
-        
+
+		log.debug("Token without digest: [" + token + "]");
         ltpa.digest = md.digest(Base64.decodeBase64(dominoSecret));
         token = concatenate(token, ltpa.digest);
+        log.debug("Token with digest: [" + token + "]");
+		String base64encodedToken = Base64.encodeBase64String(token);
+        log.debug("Base64-encoded token: [" + base64encodedToken + "]");
 
-        log.debug("Returning token [" + token + "]");
-
-        char[] base64encodedToken = LtpaBase64.encode(token);
-
-        String base64encodedTokenAsString = String.valueOf(base64encodedToken);
-
-        log.debug("Base64 encoded, that's [" + base64encodedTokenAsString + "]");
-
-        return new LtpaToken(base64encodedTokenAsString, cookieName,
+        return new LtpaToken(base64encodedToken, cookieName,
         		cookieDomain, dominoSecret);
     }
 

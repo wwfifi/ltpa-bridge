@@ -1,6 +1,7 @@
 package net.unicon.ltpabridge;
 
 import com.sun.servicetag.SystemEnvironment;
+import junit.framework.TestCase;
 import org.junit.Test;
 
 import org.apache.commons.codec.binary.Base64;
@@ -14,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 /**
  *
  */
-public class LtpaTokenTest {
+public class LtpaTokenTests {
     
     private static String cookieName = "LtpaToken";
     private static String domain = ".example.edu";
