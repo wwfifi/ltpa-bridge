@@ -1,5 +1,12 @@
 # LTPA Token Generation HTTP resource bridge
 	
+What
+----
+Java web application making bridging from Jasig CAS authentication to LTPA token generation.  Generates an LTPA token asserting the username provided by CAS.  
+
+Suitable for adaptation to any other reasonable login mechanism or single sign-on regime, of course, since the LTPA token generation bit simply asserts the username available from httpServletRequest.getRemoteUser().  (Here as populated by the CAS client in use.)
+
+
 Configure
 --------
 * Configure values in the property file `src/main/resources/ltpa.properties` appropriate to your environment.
