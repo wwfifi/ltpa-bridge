@@ -66,7 +66,7 @@ public class LtpaGeneratingResource {
 		Date creation = new Date();
 		creation.setTime(creation.getTime() - this.ltpaTokenClockSkewInSeconds);
 		Date expiration = new Date();
-		expiration.setTime(expiration.getTime() + this.ltpaTokenExpirationInMinutes + this.ltpaTokenClockSkewInSeconds);
+		expiration.setTime(expiration.getTime() + this.ltpaTokenExpirationInMinutes * 60 * 1000+ this.ltpaTokenClockSkewInSeconds * 1000);
 
 		LtpaToken ltpaToken = LtpaToken.generate(subject, creation, expiration, this.ltpaCookieName, this.ltpaCookieDomain, this.ltpaDominoSeceret);
 
